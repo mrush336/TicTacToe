@@ -1,4 +1,4 @@
-// Instantiate objects using Factory Functions
+// Instantiate game board using Factory Functions
 const board = () => {
   let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
@@ -6,22 +6,38 @@ const board = () => {
     gameBoard = ["", "", "", "", "", "", "", "", ""];
   }
 
-  function makeMove(player, position) {
-    gameBoard[position] = player;
+  function render() {
+    let space = document.createElement("div");
+    display.appendChild(space);
   }
 
   function getBoard() {
     return gameBoard;
   }
 
-  return { reset, makeMove, getBoard };
+  return { reset, render, getBoard };
 };
 
-const game = (player1, player2) => {
-  let display = document.getElementById("gameBoard");
-  const render = () => {
-    let space = document.createElement("div");
-    display.appendChild(space);
-  };
-  return { render };
+// The main game functions live here
+const game = (playerx, playero) => {
+  function makeMove(player, position) {
+    gameBoard[position] = player;
+  }
+
+  function score() {}
+
+  function currentPlayer() {}
+
+  function winningMessage(player) {
+    let messageBox = document.getElementById("status");
+    let message = "Player ${player} has won the game!";
+    messageBox.innerText(message);
+  }
+
+  function tiedgameMessage() {
+    let messageBox = document.getElementById("status");
+    let message = "The game is a tie!";
+    messageBox.innerText(message);
+  }
+  return { makeMove, score, currentPlayer, winningMessage, tiedgameMessage };
 };
