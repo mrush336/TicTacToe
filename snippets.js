@@ -6,3 +6,9 @@ const board = {
 
 board.top[0] = "x";
 board.middle[1] = "o";
+
+const player = (name, move) => {
+  const getName = () => name;
+  const move = () => {};
+  return { move, getName };
+};

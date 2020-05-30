@@ -1,14 +1,20 @@
 // Instantiate objects using Factory Functions
-const board = {
-  top: [1, 2, 3],
-  middle: [4, 5, 6],
-  bottom: [7, 8, 9],
-};
+const board = () => {
+  let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
-const player = (name, move) => {
-  const getName = () => name;
-  const move = () => {};
-  return { move, getName };
+  function reset() {
+    gameBoard = ["", "", "", "", "", "", "", "", ""];
+  }
+
+  function makeMove(player, position) {
+    gameBoard[position] = player;
+  }
+
+  function getBoard() {
+    return gameBoard;
+  }
+
+  return { reset, makeMove, getBoard };
 };
 
 const game = (player1, player2) => {
